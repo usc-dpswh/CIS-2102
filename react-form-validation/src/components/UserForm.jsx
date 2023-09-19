@@ -8,7 +8,7 @@ function UserForm() {
   const { input, isValid, inputHandler } = UserFormFunctions();
 
   return (
-    <div className='form__container'>
+    <div className={`form__container ${isValid ? "" : "rainbow--background"}`}>
 
       <h3>Enter your username</h3>
       <input
