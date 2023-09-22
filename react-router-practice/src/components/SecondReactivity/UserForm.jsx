@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import '../index.css';
-import { UserFormFunctions } from '../../../react-router-practice/src/components/SecondReactivity/UserFormFunctions';
+import '../../App.css';
+import { UserFormFunctions } from './UserFormFunctions';
 
 function UserForm() {
 

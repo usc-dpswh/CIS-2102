@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 // import { AppContext } from '../context/AppContext';
 // import AppContext from '../context/AppContext';
-import AppContext from '../context/AppContext';
+import AppContext from '../../context/AppContext'
 
 import './InputStudent.css'
 

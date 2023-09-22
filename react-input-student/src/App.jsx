@@ -13,6 +13,7 @@ import AppContext from './context/AppContext'
 function App() {
   
   const {filteredStudents} = useContext(AppContext);
+  console.log(filteredStudents)
 
   return (
 

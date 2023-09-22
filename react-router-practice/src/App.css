@@ -1,42 +1,82 @@
 #root {
+  font-family: 'Roboto Condensed', sans-serif;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.button--link {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  padding: 1rem;
+  width: 300px;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: rgb(148, 77, 142);
+  background-color: rgb(192, 106, 185);
+  transition: all 100ms;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.form__container {
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 500px;
+  background-color: #c93d96;
+}
+
+.button--link:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+input {
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-color: #b0b0b0;
+  border-width: 1px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.input--error {
+  background-color: rgb(255, 132, 132);
+  border-color: red;
+  border-width: 2px;
+}
+
+.rainbow--background {
+  background: linear-gradient(45deg, #ff4081, #e040fb, #3f51b5, #8bc34a, #ff4081);
+  background-size: 400% 100%;
+  animation: rainbow 4s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 100% 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    background-position: -100% 0;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
