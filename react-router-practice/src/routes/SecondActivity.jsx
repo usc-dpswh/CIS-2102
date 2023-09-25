@@ -6,6 +6,7 @@ import React from 'react'
 
 import '../App.css'
 
+import Header from '../components/Header'
 import UserForm from '../../../react-form-validation/src/components/UserForm'
 
 function SecondActivity() {
@@ -13,7 +14,9 @@ function SecondActivity() {
 
   return (
     <>
-      <h1>Form Validation</h1>
+      <Header
+        header="Second ReActivity" 
+      />
       <UserForm/>
     </>
   )

@@ -31,4 +31,27 @@ body {
   min-height: 100vh;
 }
 
+html {
+  background-color: #242424; /* Initial background color */
+  animation: backgroundAnimation 0.3s linear infinite alternate; /* Animation settings */
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #ff4949; /* Starting color */
+    color: white;
+  }
+  50% {
+    /* font-size: 2rem; */
+  }
+  100% {
+    /* font-size: 1.5rem; */
+    color: black;
+    background-color: #3a4dff; /* Ending color */
+  }
+}
+
+
+
+
 
