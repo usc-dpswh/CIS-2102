@@ -5,6 +5,8 @@ const AppContext = React.createContext({
   "setInputID": () => { },
   "filterByID": () => { },
   "filteredStudents": {},
+  "isLoggedIn": "",
+  "setIsLoggedIn": () => { }
 });
 
 // Data
@@ -50,6 +52,8 @@ const students = [
 export const AppContextProvider = (props) => {
   const [inputID, setInputID] = useState("");
   const [filteredStudents, setFilteredStudents] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   const filterByID = () => {
     const filtered = students.filter((student) =>
@@ -78,7 +82,9 @@ export const AppContextProvider = (props) => {
         inputID,
         setInputID,
         filterByID,
-        filteredStudents
+        filteredStudents,
+        isLoggedIn,
+        setIsLoggedIn
       }}
     >
       {props.children}

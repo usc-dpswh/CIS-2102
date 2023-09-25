@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import '../App.css'
 
@@ -10,22 +10,31 @@ import Header from '../components/Header'
 
 
 
-function FirstActivity() {
-  
-  const {filteredStudents} = useContext(AppContext);
+function FirstActivity({ isLoggedIn }) {
 
-  return (
+  const ctx = useContext(AppContext);
 
-    <>
-      <Header
-        header="First ReActivity" 
-      />
-      <InputStudent/>
+  if (ctx.isLoggedIn === true) {
+    return (
 
-      <DisplayStudents students={filteredStudents}/>
-    </>
+      <>
+        <Header
+          header="First ReActivity"
+        />
 
-  )
+        <InputStudent />
+
+        <DisplayStudents students={ctx.filteredStudents} />
+      </>
+
+    )
+  } else {
+    return (
+      <h1>You are not logged in.</h1>
+    )
+  }
+
+
 }
 
 export default FirstActivity
