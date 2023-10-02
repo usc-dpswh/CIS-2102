@@ -16,8 +16,14 @@ function App() {
 
   const [isModalClicked, setIsModalClicked] = useState(false);
 
+  const [editIndex, setEditIndex] = useState(-1);
+
   const editModal = useRef();
-  const deleteModal = useRef();
+
+  const nameInput = useRef();
+  const contactInput = useRef();
+  const idInput = useRef();
+  const courseInput = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -48,20 +54,59 @@ function App() {
   }
 
   const editHandler = (index) => {
+
     // Access the <dialog> element using the ref
     const editDialog = editModal.current;
-    
+
+    setEditIndex(index);
+
     // Open the modal
-    editDialog.open = true;
-  
-    console.log(isModalClicked);
+    editDialog.showModal();
+
+    console.log(index);
   }
-  
+
+  const updateHandler = (event) => {
+    event.preventDefault();
+
+    const updated = [...contactList];
+
+    updated[editIndex] = {
+      name: input.name,
+      contact: input.contact,
+      id: input.id,
+      course: input.course,
+    };
+
+    setContactList(updated);
+
+    // Close the modal
+    editModal.current.close();
+
+    nameInput.current.value = "";
+    contactInput.current.value = "";
+    idInput.current.value = "";
+    courseInput.current.value = "";
+
+    // Reset the input values
+    setInput({
+      name: "",
+      contact: "",
+      id: "",
+      course: "",
+    });
+    
+  }
+
 
   const deleteHandler = (index) => {
-    setIsModalClicked(!isModalClicked);
-    console.log(isModalClicked);
+    // Use filter to create a new array without the item at the specified index
+    const updatedContactList = contactList.filter((item, idx) => idx !== index);
+
+    // Update the contactList state with the modified array
+    setContactList(updatedContactList);
   }
+
 
   return (
     <>
@@ -129,7 +174,7 @@ function App() {
                   <td>{item.course}</td>
                   <td>
                     <button
-                      
+
                       onClick={() => editHandler(index)}
                     >Edit</button>
                     <button onClick={() => deleteHandler(index)}>Delete</button>
@@ -143,35 +188,64 @@ function App() {
       </div>
 
       <dialog ref={editModal}>
-        <div style={{ backgroundColor: '#505050', height: 'auto', width: '300px' }}>
+        <div style={{ backgroundColor: 'pink', height: 'auto', width: '300px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', padding: '1rem' }}>
 
             <h1 style={{ margin: '0 auto 0 auto' }}>Edit Contact</h1>
 
-            <form onSubmit={submitHandler}>
+            <form onSubmit={() => updateHandler(index)}>
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ marginBottom: '5px' }}>Name</h3>
-                <input onChange={handleChange} name="name" type="text" placeholder='Enter name'></input>
+                <input
+                  onChange={handleChange}
+                  name="name"
+                  type="text"
+                  placeholder='Enter name'
+                  ref={nameInput}></input>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ marginBottom: '5px' }}>Contact number</h3>
-                <input onChange={handleChange} name="contact" type="text" placeholder='Enter contact number'></input>
+                <input
+                  onChange={handleChange}
+                  name="contact"
+                  type="text"
+                  placeholder='Enter contact number'
+                  ref={contactInput}></input>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ marginBottom: '5px' }}>ID</h3>
-                <input onChange={handleChange} name="id" type="text" placeholder='Enter ID'></input>
+                <input
+                  onChange={handleChange}
+                  name="id"
+                  type="text"
+                  placeholder='Enter ID'
+                  ref={idInput}></input>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ marginBottom: '5px' }}>Course</h3>
-                <input onChange={handleChange} name="course" type="text" placeholder='Enter course'></input>
+                <input
+                  onChange={handleChange}
+                  name="course"
+                  type="text"
+                  placeholder='Enter course'
+                  ref={courseInput}></input>
               </div>
 
-              <button style={{ width: '100%', marginTop: '3rem' }}>Update Contact</button>
-              <button style={{ width: '100%', marginTop: '1rem' }} onClick={() => editModal.current.close()}>Close</button>
+              <button
+                style={{ width: '100%', marginTop: '3rem' }}
+                onClick={updateHandler}
+              >Update Contact</button>
+              <button
+                type="button" // Add this attribute to prevent form submission
+                style={{ width: '100%', marginTop: '1rem' }}
+                onClick={() => editModal.current.close()}
+              >
+                Close
+              </button>
 
             </form>
           </div>
