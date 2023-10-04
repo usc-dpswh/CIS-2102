@@ -21,8 +21,8 @@ const ContactForm = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <h3 style={{ marginBottom: '5px' }}>Contact number</h3>
-            <input onChange={ctx.handleChange} name="contact" type="text" placeholder='Enter contact number'></input>
+            <h3 style={{ marginBottom: '5px' }}>Age</h3>
+            <input onChange={ctx.handleChange} name="contact" type="text" placeholder='Enter age'></input>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>

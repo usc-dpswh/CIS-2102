@@ -39,7 +39,7 @@ export const AppContextProvider = (props) => {
 
     const newContact = {
       name: input.name,
-      contact: input.contact,
+      age: input.contact,
       id: input.id,
       course: input.course,
     };
@@ -77,7 +77,7 @@ export const AppContextProvider = (props) => {
 
     updated[editIndex] = {
       name: input.name,
-      contact: input.contact,
+      age: input.contact,
       id: input.id,
       course: input.course,
     };

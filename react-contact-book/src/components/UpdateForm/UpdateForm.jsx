@@ -30,12 +30,12 @@ const UpdateForm = () => {
 						</div>
 
 						<div style={{ display: 'flex', flexDirection: 'column' }}>
-							<h3 style={{ marginBottom: '5px' }}>Contact number</h3>
+							<h3 style={{ marginBottom: '5px' }}>Age</h3>
 							<input
 								onChange={ctx.handleChange}
 								name="contact"
 								type="text"
-								placeholder='Enter contact number'
+								placeholder='Enter age'
 								ref={contactInput}></input>
 						</div>
 
