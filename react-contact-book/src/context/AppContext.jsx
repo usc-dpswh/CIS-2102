@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 const AppContext = React.createContext({
   "handleChange": () => { },
@@ -11,7 +11,8 @@ const AppContext = React.createContext({
   "setIsSubmitted": () => { },
   "updateHandler": () => { },
   "contactList": [],
-  "setContactList": () => { }
+  "setContactList": () => { },
+  "dataLoaded": false
 })
 
 export const AppContextProvider = (props) => {
@@ -31,6 +32,20 @@ export const AppContextProvider = (props) => {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const editModal = useRef(null);
+
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch('https://my-json-server.typicode.com/troy1129/jsonplaceholder/db')
+      .then((response) => response.json())
+      .then((json) => {
+        setContactList(json.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => setDataLoaded(true))
+  }, []);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -120,7 +135,8 @@ export const AppContextProvider = (props) => {
         updateHandler,
         editModal,
         contactList,
-        setContactList
+        setContactList,
+        dataLoaded
       }}
     >
       {props.children}

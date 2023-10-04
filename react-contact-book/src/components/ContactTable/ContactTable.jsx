@@ -37,13 +37,13 @@ const ContactTable = () => {
 								<td>{item.age}</td>
 								<td>{item.id}</td>
 								<td>{item.course}</td>
-								<td>
+								<td style={{ display: 'flex' }}>
 									<button
-										style={{ width: '80%', margin: '1rem 0 1rem 0' }}
+										style={{ width: '80%' }}
 										onClick={() => ctx.editHandler(index)}
 									>Edit</button>
 									<button
-										style={{ width: '80%', marginBottom: '1rem' }}
+										style={{ width: '80%' }}
 										onClick={() => ctx.deleteHandler(index)}>Delete</button>
 								</td>
 							</tr>

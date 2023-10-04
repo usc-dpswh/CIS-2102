@@ -9,20 +9,7 @@ import Header from '../../react-api-consume/src/components/Header';
 
 function App() {
 
-  const ctx = useContext(AppContext)
-  const [dataLoaded, setDataLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch('https://my-json-server.typicode.com/troy1129/jsonplaceholder/db')
-      .then((response) => response.json())
-      .then((json) => {
-        ctx.setContactList(json.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => setDataLoaded(true))
-  }, []);
+  const {dataLoaded} = useContext(AppContext)
 
   return (
     <>
