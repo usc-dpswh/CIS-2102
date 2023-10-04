@@ -4,7 +4,8 @@ const Header = (props) => {
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                marginBottom: '3rem'
+                alignContent: 'center',
+                marginBottom: '2rem'
             }}
         >
             <h1 style={{ margin: '0' }}>{props.header}</h1>
