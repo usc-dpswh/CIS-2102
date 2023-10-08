@@ -12,7 +12,7 @@ function App() {
 
   const apiUrl = 'https://api.waifu.im/search';
   const params = {
-    included_tags: `${tagPlaceholder}`,
+    included_tags: `${id}`,
     height: '>=1000',
   };
   const queryParams = new URLSearchParams(params);
@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <Header header="Fourth ReActivity" />
-      <input onChange={inputHandler} value={tagPlaceholder}></input>
+      <input onChange={inputHandler}></input>
 
       <h1>Available Tags:</h1>
 
@@ -110,7 +110,7 @@ function App() {
         ) : (
           data.map((item) => (
             <div style={{ backgroundColor: '#505050', padding: '1rem', borderRadius: '1rem' }}>
-              <img style={{ height: '1000px', width: '1000px' }} src={item.images[0].url} alt="Waifu" />
+              <img style={{ objectFit: 'cover' }} src={item.images[0].url} alt="Waifu" />
             </div>
           ))
         )}
