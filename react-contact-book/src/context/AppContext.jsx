@@ -35,6 +35,8 @@ export const AppContextProvider = (props) => {
 
   const [dataLoaded, setDataLoaded] = useState(false);
 
+  const [idExist, setIdExist] = useState(false);
+
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/troy1129/jsonplaceholder/db')
       .then((response) => response.json())
@@ -49,23 +51,39 @@ export const AppContextProvider = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    setIsSubmitted(true)
-
+  
+    setIsSubmitted(true);
+  
     const newContact = {
       name: input.name,
       age: input.contact,
       id: input.id,
       course: input.course,
     };
-
-    setContactList(prev => [...prev, newContact])
-
+  
+    // Check if the ID already exists in the contact list
+    const idExists = contactList.some((contact) => contact.id.toString() === newContact.id.toString());
+  
+    if (idExists) {
+      alert(`ID [${newContact.id}] already exists!`);
+    } else {
+      // Add the new contact only if the ID doesn't exist
+      setContactList((prev) => [...prev, newContact]);
+      setInput({
+        name: "",
+        contact: "",
+        id: "",
+        course: "",
+      });
+    }
+  
     document.getElementById("main_form").reset();
-
+  
+    console.log(idExists);
     console.log(isSubmitted);
     console.log(contactList);
   }
+  
 
   const handleChange = (event) => {
     // console.log(event)
@@ -74,16 +92,16 @@ export const AppContextProvider = (props) => {
   }
 
   const editHandler = (index) => {
-  // Access the <dialog> element using the ref from context
-  const editDialog = editModal.current;
+    // Access the <dialog> element using the ref from context
+    const editDialog = editModal.current;
 
-  setEditIndex(index);
+    setEditIndex(index);
 
-  // Open the modal
-  editDialog.showModal();
+    // Open the modal
+    editDialog.showModal();
 
-  console.log(index);
-};
+    console.log(index);
+  };
 
   const updateHandler = (event) => {
     event.preventDefault();
@@ -111,7 +129,7 @@ export const AppContextProvider = (props) => {
     //   id: "",
     //   course: "",
     // });
-    
+
   }
 
 
