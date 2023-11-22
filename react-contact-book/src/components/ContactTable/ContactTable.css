@@ -1,0 +1,12 @@
+table {
+    text-align: center;
+    margin-top: 2rem;
+    /* all: unset; */
+    /* border-style: solid;
+    border-color: white; */
+    border: 0 solid white;
+}
+
+tr:nth-child(even) {
+    background-color: #404040;
+}

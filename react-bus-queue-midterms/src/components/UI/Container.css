@@ -1,0 +1,10 @@
+.passenger-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: blue; */
+}

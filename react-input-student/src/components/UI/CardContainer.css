@@ -1,0 +1,12 @@
+.card-container {
+    /* padding: 1rem; */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: #64CCC5; */
+    width: 100%;
+    /* padding: 1rem; */
+    /* margin: 1rem; */
+}
